@@ -1,5 +1,8 @@
+require('dotenv').config();
+
 const dataconfig = {
   dialect: 'mysql',
+  port: process.env.PORT,
   host: process.env.MYSQL_HOST,
   username: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
@@ -10,4 +13,4 @@ const dataconfig = {
   }
 };
 
-export default dataconfig;
+module.exports = dataconfig;
