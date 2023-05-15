@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up (queryInterface, Sequelize) {
-    return queryInterface.createTable('reserve_tb', {
+    return queryInterface.createTable('reservations', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -25,7 +25,7 @@ module.exports = {
         onDelete: 'CASCADE',
         field: 'client_id',
         references: {
-          model: 'client_tb',
+          model: 'clients',
           key: 'id',
         }
       },
@@ -36,22 +36,14 @@ module.exports = {
         onDelete: 'CASCADE',
         field: 'table_id',
         references: {
-          model: 'table_tb',
+          model: 'tables',
           key: 'id',
         }
       },
-      created_at: {
-        type: Sequelize.DATE,
-        allowNull: false
-      },
-      update_at: {
-        type: Sequelize.DATE,
-        allowNull: false
-      }
     });
   },
 
   down (queryInterface, Sequelize) {
-    return queryInterface.dropTable('reserve_tb');
+    return queryInterface.dropTable('reservations');
   }
 };

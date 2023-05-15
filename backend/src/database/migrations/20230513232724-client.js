@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up (queryInterface, Sequelize) {
-    return queryInterface.createTable('client_tb', {
+    return queryInterface.createTable('clients', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -18,18 +18,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      created_at: {
-        type: Sequelize.DATE,
-        allowNull: false
-      },
-      update_at: {
-        type: Sequelize.DATE,
-        allowNull: false
-      }
     });
   },
 
   down (queryInterface, Sequelize) {
-    return queryInterface.dropTable('client_tb');
+    return queryInterface.dropTable('clients');
   }
 };

@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up (queryInterface, Sequelize) {
-    return queryInterface.createTable('table_tb', {
+    return queryInterface.createTable('tables', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -18,18 +18,10 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: false
       },
-      created_at: {
-        type: Sequelize.DATE,
-        allowNull: false
-      },
-      update_at: {
-        type: Sequelize.DATE,
-        allowNull: false
-      }
     });
   },
 
   down (queryInterface, Sequelize) {
-    return queryInterface.dropTable('table_tb');
+    return queryInterface.dropTable('tables');
   }
 };

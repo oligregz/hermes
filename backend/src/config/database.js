@@ -8,7 +8,7 @@ const dataconfig = {
   password: process.env.MYSQL_PASSWORD,
   database: process.env.MYSQL_DATABASE,
   define: {
-    timestamp: true,
+    timestamp: false,
     underscored: true,
   }
 };
