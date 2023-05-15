@@ -3,11 +3,12 @@ const { Model, DataTypes } = require('sequelize');
 class Reserve extends Model {
   static init(sequelize) {
     super.init({
-      id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
       date: DataTypes.DATEONLY,
       hour: DataTypes.DATE,
       clientId: DataTypes.INTEGER,
       tableId: DataTypes.INTEGER,
+      created_at: DataTypes.DATE,
+      updated_at: DataTypes.DATE,
     }, {
       sequelize,
       modelName: 'Reserve',
