@@ -3,9 +3,10 @@ const { Model, DataTypes } = require('sequelize');
 class Client extends Model {
   static init(sequelize) {
     super.init({
-      id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
       name: DataTypes.STRING,
       telephone: DataTypes.STRING,
+      created_at: DataTypes.DATE,
+      updated_at: DataTypes.DATE,
     }, {
       sequelize,
       modelName: 'Client',
