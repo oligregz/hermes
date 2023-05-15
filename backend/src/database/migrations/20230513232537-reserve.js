@@ -18,6 +18,28 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false
       },
+      clientId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        field: 'client_id',
+        references: {
+          model: 'client_tb',
+          key: 'id',
+        }
+      },
+      tableId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        field: 'table_id',
+        references: {
+          model: 'table_tb',
+          key: 'id',
+        }
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false
@@ -33,26 +55,3 @@ module.exports = {
     return queryInterface.dropTable('reserve_tb');
   }
 };
-
-// clientId: {
-//   type: Sequelize.INTEGER,
-//   allowNull: false,
-//   onUpdate: 'CASCADE',
-//   onDelete: 'CASCADE',
-//   field: 'client_id',
-//   references: {
-//     model: 'client_tb',
-//     key: 'id',
-//   }
-// },
-// tableId: {
-//   type: Sequelize.INTEGER,
-//   allowNull: false,
-//   onUpdate: 'CASCADE',
-//   onDelete: 'CASCADE',
-//   field: 'table_id',
-//   references: {
-//     model: 'table_tb',
-//     key: 'id',
-//   }
-// },
