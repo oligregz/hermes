@@ -19,6 +19,7 @@ class Table extends Model {
     Table.hasOne(models.Reserve, {
       foreignKey: 'tableId',
       as: 'reserve',
+      onDelete: 'CASCADE',
     });
   }
 }

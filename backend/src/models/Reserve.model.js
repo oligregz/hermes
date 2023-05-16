@@ -26,6 +26,7 @@ class Reserve extends Model {
     Reserve.belongsTo(models.Table, {
       foreignKey: 'tableId',
       as: 'tables',
+      onDelete: 'CASCADE',
     });
   }
 }
