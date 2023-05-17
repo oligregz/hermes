@@ -24,13 +24,19 @@ const FormLogin = () => {
     navigate("/home");
   }
 
+  const handleNameChange = (event) => {
+    const value = event.target.value;
+    setName(value);
+    console.log(value); // Mostra o valor do nome no console
+  };
+
   return (
     <div>
       <Input
         type="text"
         placeholder="Digite seu nome"
         value={name}
-        onChange={(e) => [setName(e.target.value)]}
+        onChange={handleNameChange}
       />
       <Button
         Text="Entrar"

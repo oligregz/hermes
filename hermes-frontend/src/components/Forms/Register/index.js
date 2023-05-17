@@ -9,8 +9,8 @@ const FormRegister = () => {
   const { register } = useAuth();
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const [telephone, setTelephone] = useState("");
+  let [name, setName] = useState("");
+  let [telephone, setTelephone] = useState("");
 
   const handleRegister = () => {
 
@@ -25,19 +25,31 @@ const FormRegister = () => {
     navigate("/home");
   }
 
+  const handleNameChange = (event) => {
+    const value = event.target.value;
+    setName(value);
+    console.log(value); // Mostra o valor do nome no console
+  };
+
+  const handleTelephoneChange = (event) => {
+    const value = event.target.value;
+    setTelephone(value);
+    console.log(value); // Mostra o valor do telefone no console
+  };
+
   return (
     <div>
       <Input
         type="text"
         placeholder="Digite seu nome"
         value={name}
-        onChange={(e) => [setName(e.target.value)]}
+        onChange={handleNameChange}
       />
       <Input
         type="text"
         placeholder="Digite seu telefone"
         value={telephone}
-        onChange={(e) => [setTelephone(e.target.value)]}
+        onChange={handleTelephoneChange}
       />
       <Button
         Text="Cadastrar"
