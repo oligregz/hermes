@@ -1,9 +1,13 @@
 import axios from 'axios';
 
-const postClient = async () => {
+const postClient = async (name, telephone) => {
   try {
-    const response = await axios.post('http://localhost:3333/v1/client-post', { name: 'John', age: 25 });
+    const response = await axios.post('http://localhost:3333/v1/client-post', {
+      name: name,
+      telephone: telephone,
+    });
     console.log(response.data);
+    return response.data;
   } catch (error) {
     console.error(error);
   }
@@ -12,7 +16,7 @@ const postClient = async () => {
 const getClients = async () => {
   try {
     const response = await axios.get('http://localhost:3333/v1/client-getall');
-    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.error(error);
   }

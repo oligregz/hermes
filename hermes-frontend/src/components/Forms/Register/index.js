@@ -3,6 +3,7 @@ import Button from '../../Button';
 import Input from '../../Input';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import { postClient } from '../../../services/sevice';
 
 const FormRegister = () => {
 
@@ -12,18 +13,26 @@ const FormRegister = () => {
   const [name, setName] = useState("");
   const [telephone, setTelephone] = useState("");
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
 
     if(name === "" || telephone === "") {
       alert("Preencha os campos!");
       return;
     }
-    // aqui chama a função que vai mandar uma requisição para o banco de
-    // dados com o nome e o telefone do cliente para cadastrar
-    // e depois que vier o response, loga na home
-    register(name, telephone);
 
-    navigate("/home");
+    try {
+      const result = await register(name, telephone);
+
+      if (result === 0) {
+        // chama a função de registro
+        postClient(name, telephone);
+        navigate("/home");
+        return;
+      }
+
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   const handleNameChange = (event) => {

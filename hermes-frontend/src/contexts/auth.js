@@ -4,7 +4,6 @@ import { postClient, getClients } from '../services/sevice';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-
   const [client, setClient] = useState(
     {
       name: "",
@@ -19,14 +18,24 @@ export const AuthProvider = ({ children }) => {
     console.log("Client", client);
   }
 
-  const register = (name, telephone) => {
-    // checa no banco de dados se já existe esse client, caso sim,
-    // envia mensagem(alert) de já existente e redireciona para login,
-    // caso contrário, adiciona no banco de dados.
+  const register = async (name, telephone) => {
+    try {
+      const result = await getClients();
 
-    const clients = getClients();
+      const existClient = result.clients.filter((client) => client.name === name
+        && client.telephone === telephone
+      );
 
-    console.log("Clients", clients);
+      if (existClient.length === 0) {
+        return 0;
+      }
+
+      console.log(result.clients)
+      return result.clients;
+    } catch (error) {
+      console.error(error);
+    }
+
   }
 
   return <AuthContext.Provider
