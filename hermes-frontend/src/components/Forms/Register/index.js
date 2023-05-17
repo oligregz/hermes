@@ -21,6 +21,7 @@ const FormRegister = () => {
     // aqui chama a função que vai mandar uma requisição para o banco de
     // dados com o nome e o telefone do cliente para cadastrar
     // e depois que vier o response, loga na home
+    register(name, telephone);
 
     navigate("/home");
   }

@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import { postClient, getClients } from '../services/sevice';
 
 export const AuthContext = createContext();
 
@@ -18,11 +19,14 @@ export const AuthProvider = ({ children }) => {
     console.log("Client", client);
   }
 
-  const register = () => {
+  const register = (name, telephone) => {
     // checa no banco de dados se já existe esse client, caso sim,
     // envia mensagem(alert) de já existente e redireciona para login,
     // caso contrário, adiciona no banco de dados.
-    console.log("Client", client);
+
+    const clients = getClients();
+
+    console.log("Clients", clients);
   }
 
   return <AuthContext.Provider

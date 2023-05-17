@@ -1,12 +1,24 @@
 import axios from 'axios';
 
-const postData = async () => {
+const postClient = async () => {
   try {
-    const response = await axios.post('https://localhost/v1/client-post', { name: 'John', age: 25 });
+    const response = await axios.post('http://localhost:3333/v1/client-post', { name: 'John', age: 25 });
     console.log(response.data);
   } catch (error) {
     console.error(error);
   }
 };
 
-export default postData;
+const getClients = async () => {
+  try {
+    const response = await axios.get('http://localhost:3333/v1/client-getall');
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export {
+  postClient,
+  getClients,
+};
