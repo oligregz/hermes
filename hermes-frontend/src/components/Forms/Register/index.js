@@ -9,8 +9,8 @@ const FormRegister = () => {
   const { register } = useAuth();
   const navigate = useNavigate();
 
-  let [name, setName] = useState("");
-  let [telephone, setTelephone] = useState("");
+  const [name, setName] = useState("");
+  const [telephone, setTelephone] = useState("");
 
   const handleRegister = () => {
 
