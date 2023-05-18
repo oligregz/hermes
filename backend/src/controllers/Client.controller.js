@@ -8,13 +8,13 @@ module.exports = {
       const existsClient = await Client.findOne({ where: { name, telephone }});
       
       if(existsClient) {
-        res.status(401).json({ message: "Customer already registered !" })
+        res.status(401).json({ message: "Customer already registered !" });
       } else {
         const client = await Client.create({name, telephone});
-        res.status(200).json({ client, message: "Client registered !" })
+        res.status(200).json({ client, message: "Client registered !" });
       }
       } catch (e) {
-      res.status(400).json({ message: e })
+      res.status(400).json({ message: e });
     }
   },
   async updateClient(req, res) {
@@ -24,16 +24,30 @@ module.exports = {
       const existsClient = await Client.findOne({ where: { id }});
       
       if(!existsClient) {
-        res.status(401).json({ message: "No client found!" })
+        res.status(401).json({ message: "No client found!" });
       } else {
         const client = await Client.update(
           { name, telephone },
           { where: { id } }
         );
-        res.status(200).json({ client, messahe: "Client updated !" })
+        res.status(200).json({ client, messahe: "Client updated !" });
       }
     } catch (e) {
-      res.status(400).json({ message: e })
+      res.status(400).json({ message: e });
+    }
+  },
+  async findClientById(req, res) {
+    try {
+      const { id } = req.params;
+      const client = await Client.findOne({ where: { id } });
+
+      if (!client) {
+        res.status(401).json({ message: "No client found !" });
+      } else {
+        res.status(200).json({ client });
+      }
+    } catch (e) {
+      res.status(400).json({ message: e });
     }
   },
   async listClients(req, res) {
@@ -45,7 +59,7 @@ module.exports = {
         res.status(200).json({ clients });
       }
     } catch (e) {
-      res.status(400).json({ message: e })
+      res.status(400).json({ message: e });
     }
   },
   async deleteClient(req, res) {
@@ -53,7 +67,7 @@ module.exports = {
       const { id } = req.params;
       const existsClient = await Client.findOne({ where: { id } });
       if(!existsClient) {
-        res.status(401).json({ message: "Client not found !" })
+        res.status(401).json({ message: "Client not found !" });
       } else {
         await Client.destroy({ where: { id } });
         res.status(200).json({ message: "Client removed !" });

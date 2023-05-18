@@ -7,6 +7,7 @@ const router = Router();
 
 router.post('/v1/client-post', ClientController.createClient);
 router.put('/v1/client-update/:id', ClientController.updateClient);
+router.get('/v1/client-get/:id', ClientController.findClientById);
 router.get('/v1/client-getall', ClientController.listClients);
 router.delete('/v1/client-delete/:id', ClientController.deleteClient);
 
