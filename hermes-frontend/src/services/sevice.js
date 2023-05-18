@@ -31,8 +31,18 @@ const getReserves = async () => {
   }
 };
 
+const getClientById = async (id) => {
+  try {
+    const response = await axios.get(`http://localhost:3333/v1/client-get/${id}`);
+    return response.data;
+  } catch (e) {
+    console.error(e)
+  }
+}
+
 export {
   postClient,
   getClients,
   getReserves,
+  getClientById,
 };

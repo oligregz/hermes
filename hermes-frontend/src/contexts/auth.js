@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { getClients, getReserves } from '../services/sevice';
+import { getClients, getReserves, getClientById } from '../services/sevice';
 
 export const AuthContext = createContext();
 
@@ -55,7 +55,8 @@ export const AuthProvider = ({ children }) => {
 
   const clientById = async (id) => {
     try {
-
+      const client = await getClientById(id);
+      return client;
     } catch (e) {
       console.error(e);
     }
@@ -68,6 +69,7 @@ export const AuthProvider = ({ children }) => {
         login,
         register,
         reserves,
+        clientById,
       }
     }
   >{ children }</AuthContext.Provider>;

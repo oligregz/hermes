@@ -1,31 +1,57 @@
 import React, { useState, useEffect }from 'react';
 import useAuth from '../../../hooks/useAuth';
+import { getClientById } from '../../../services/sevice';
 import formatDateToBR from '../../../utils/date';
 import formatDateTimeToBR from '../../../utils/time';
 
 const Reserve = () => {
 
-  const { reserves, clientById } = useAuth();
+  const { reserves } = useAuth();
   const [reservesData, setReservesData] = useState(null);
-  const [nameClient, setNameClient] = useState("");
+  const [valuesData, setValuesData] = useState({});
 
+  
   useEffect(() => {
     const fetchData = async () => {
       const data = await reserves();
       setReservesData(data.reserves);
+      setValuesData(JSON.stringify(data.reserves));
     };
-
+    
     fetchData();
   }, [reserves]);
 
-  // cria uma função que busca o cliente pelo id
+  // function parseJSONToObject() {
+  //   try {
+  //     const obj = JSON.parse(valuesData);
+  //     console.log(obj);
+  //     return obj;
+  //   } catch (error) {
+  //     console.error('Erro ao converter JSON para objeto:', error);
+  //     return null;
+  //   }
+  // }
+
+  // const nameClient = (id) => {
+  //   const reserveObject = parseJSONToObject();
+
+  //   for (let i = 0; i < reserveObject.length; i++) {
+  //     let idClient = reserveObject[i].clientId;
+  //     if (idClient === id) {
+  //       const client = getClientById(id);
+  //       console.log(client.id);
+  //       return client.id;
+  //     }
+  //   }
+  // }
+
   return (
     <div>
       {reservesData && Object.entries(reservesData).map(([key, value]) => (
         <li className="list-group-item" key={key}>
           {
-          `Cliente: ${getClientById(value.clientId)}
-          | Referência: ${value.id}
+          `Referência do Cliente: ${value.id}
+          | Mesa: ${value.tableId}
           | Data: ${formatDateToBR(value.date)}
           | Hora: ${formatDateTimeToBR(value.hour)}`
           }
