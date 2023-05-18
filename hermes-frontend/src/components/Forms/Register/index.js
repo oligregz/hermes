@@ -51,18 +51,21 @@ const FormRegister = () => {
   return (
     <div>
       <Input
+        className="form-control"
         type="text"
         placeholder="Digite seu nome"
         value={name}
         onChange={handleNameChange}
       />
       <Input
+        className="form-control"
         type="text"
         placeholder="Digite seu telefone"
         value={telephone}
         onChange={handleTelephoneChange}
       />
       <Button
+        Type="button"
         Text="Cadastrar"
         onClick={handleRegister}
       />

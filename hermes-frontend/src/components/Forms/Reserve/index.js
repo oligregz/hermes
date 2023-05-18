@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import Input from '../../Input';
+import Button from'../../Button';
 import './Reserve.css';
 
 const Reservevation = () => {
@@ -33,34 +35,46 @@ const Reservevation = () => {
   
       if (dayOfWeek !== 0 && (selectedHour < startHour || selectedHour > endHour)) {
         event.preventDefault();
-        alert('Selecione um horário válido. Horários permitidos: das 18:00 às 23:59 exceto aos domingos .');
+        alert('Selecione um horário válido. Horários permitidos: das 18:00 às 23:59 .');
         hourField.value = '';
         hourField.focus();
       }
     });
   }, []);
 
+  const submit = (event) => {
+    event.preventDefault();
+    console.log("submit");
+  }
+
   return (
     <div class="container mt-5">
       <h4>Faça sua reserva preenchendo os campos abaixo</h4>
-      <form id="myForm">
+      <form id="myForm" onSubmit={submit}>
         <div class="form-group">
           <label for="dateField">Data:</label>
-          <input type="date" class="form-control" id="dateField" required></input>
+          <Input type="date" className="form-control" id="dateField" required />
         </div>
         <div class="form-group">
           <label for="hourField">Hora:</label>
-          <input type="time" class="form-control" id="hourField" required></input>
+          <Input type="time" className="form-control" id="hourField" required />
         </div>
         <div class="form-group">
           <label for="clientIdField">ID do Cliente:</label>
-          <input type="text" class="form-control" id="clientIdField" required></input>
+          <Input type="text" className="form-control" id="clientIdField" required />
         </div>
         <div class="form-group">
           <label for="tableIdField">ID da Mesa:</label>
-          <input type="text" class="form-control" id="tableIdField" required></input>
+          <Input type="text" className="form-control" id="tableIdField" required />
         </div>
-        <button type="submit" class="btn btn-primary" id="submitButton" disabled>Enviar</button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          id="submitButton"
+          disabled
+        >
+          Enviar
+        </button>
       </form>
     </div>
   )

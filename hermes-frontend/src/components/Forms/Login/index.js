@@ -43,12 +43,14 @@ const FormLogin = () => {
   return (
     <div>
       <Input
+        className="form-control"
         type="text"
         placeholder="Digite seu nome"
         value={name}
         onChange={handleNameChange}
       />
       <Button
+        Type="button"
         Text="Entrar"
         onClick={handleLogin}
       />
