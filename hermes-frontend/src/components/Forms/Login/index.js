@@ -11,23 +11,34 @@ const FormLogin = () => {
 
   const [name, setName] = useState("");
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
 
-    if(name === "") {
-      alert("Preencha o campo com seu nome!");
-      return;
+    try {
+      if(name === "") {
+        alert("Preencha o campo com seu nome!");
+        return;
+      };
+
+      const getLogin = await login(name);
+
+      if (getLogin === 0) {
+        alert("Usuário não cadastrado!");
+        navigate("/register");
+        return;
+      }
+
+      navigate("/home");
+
+    } catch (e) {
+      console.error(e);
     }
 
-    // aqui chama a função que vai mandar uma requisição para o banco de
-    // dados o nome do cliente e checar se ele existe
-
-    navigate("/home");
   }
 
   const handleNameChange = (event) => {
     const value = event.target.value;
     setName(value);
-    console.log(value); // Mostra o valor do nome no console
+    console.log(value);
   };
 
   return (

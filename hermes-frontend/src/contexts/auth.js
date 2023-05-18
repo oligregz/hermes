@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { postClient, getClients } from '../services/sevice';
+import { getClients } from '../services/sevice';
 
 export const AuthContext = createContext();
 
@@ -11,22 +11,36 @@ export const AuthProvider = ({ children }) => {
     }
   );
 
-  const login = () => {
-    // busca no banco de dados o nome do cliente passado
-    // em lowercase e checa se já existe, caso sim, seta o client
-    // no state que vai ficar true no routes e loga.
-    console.log("Client", client);
+  const login = async (name) => {
+
+    try {
+      const result = await getClients();
+
+      const searchRegisteredClient = result.clients
+        .filter((client) => {
+          return client.name === name
+        }
+      );
+
+      if (searchRegisteredClient.length === 0) {
+        return 0;
+      }
+      console.log(searchRegisteredClient);
+      return searchRegisteredClient;
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   const register = async (name, telephone) => {
     try {
       const result = await getClients();
 
-      const existClient = result.clients.filter((client) => client.name === name
+      const searchRegisteredClient = result.clients.filter((client) => client.name === name
         && client.telephone === telephone
       );
 
-      if (existClient.length === 0) {
+      if (searchRegisteredClient.length === 0) {
         return 0;
       }
 

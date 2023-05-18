@@ -24,11 +24,12 @@ const FormRegister = () => {
       const result = await register(name, telephone);
 
       if (result === 0) {
-        // chama a função de registro
         postClient(name, telephone);
         navigate("/home");
         return;
       }
+
+      alert("Cliente já cadastrado");
 
     } catch (error) {
       console.error(error);
@@ -38,13 +39,13 @@ const FormRegister = () => {
   const handleNameChange = (event) => {
     const value = event.target.value;
     setName(value);
-    console.log(value); // Mostra o valor do nome no console
+    console.log(value);
   };
 
   const handleTelephoneChange = (event) => {
     const value = event.target.value;
     setTelephone(value);
-    console.log(value); // Mostra o valor do telefone no console
+    console.log(value);
   };
 
   return (
