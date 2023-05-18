@@ -4,12 +4,7 @@ import { getClients, getReserves, getClientById } from '../services/sevice';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [client, setClient] = useState(
-    {
-      name: "",
-      telephone:"",
-    }
-  );
+  const [currentClient, setCurrentClient] = useState("");
 
   const login = async (name) => {
     try {
@@ -22,6 +17,7 @@ export const AuthProvider = ({ children }) => {
       if (searchRegisteredClient.length === 0) {
         return 0;
       }
+      setCurrentClient(searchRegisteredClient[0].name);
       return searchRegisteredClient;
     } catch (e) {
       console.error(e);
@@ -65,7 +61,7 @@ export const AuthProvider = ({ children }) => {
   return <AuthContext.Provider
     value={ 
       {
-        client,
+        currentClient,
         login,
         register,
         reserves,

@@ -6,7 +6,7 @@ import useAuth from '../../../hooks/useAuth';
 
 const FormLogin = () => {
 
-  const { login } = useAuth();
+  const { login, currentClient } = useAuth();
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -26,9 +26,8 @@ const FormLogin = () => {
         navigate("/register");
         return;
       }
-
       navigate("/home");
-
+      console.log(currentClient);
     } catch (e) {
       console.error(e);
     }
