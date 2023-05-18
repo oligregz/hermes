@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { getClients } from '../services/sevice';
+import { getClients, getReserves } from '../services/sevice';
 
 export const AuthContext = createContext();
 
@@ -12,20 +12,16 @@ export const AuthProvider = ({ children }) => {
   );
 
   const login = async (name) => {
-
     try {
       const result = await getClients();
-
       const searchRegisteredClient = result.clients
         .filter((client) => {
           return client.name === name
         }
       );
-
       if (searchRegisteredClient.length === 0) {
         return 0;
       }
-      console.log(searchRegisteredClient);
       return searchRegisteredClient;
     } catch (e) {
       console.error(e);
@@ -35,7 +31,6 @@ export const AuthProvider = ({ children }) => {
   const register = async (name, telephone) => {
     try {
       const result = await getClients();
-
       const searchRegisteredClient = result.clients.filter((client) => client.name === name
         && client.telephone === telephone
       );
@@ -43,13 +38,27 @@ export const AuthProvider = ({ children }) => {
       if (searchRegisteredClient.length === 0) {
         return 0;
       }
-
-      console.log(result.clients)
       return result.clients;
     } catch (error) {
       console.error(error);
     }
+  }
 
+  const reserves = async () => {
+    try {
+      const reserves = await getReserves();
+      return reserves;
+    } catch (e) {
+      console.error(e);
+    };
+  };
+
+  const clientById = async (id) => {
+    try {
+
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   return <AuthContext.Provider
@@ -58,6 +67,7 @@ export const AuthProvider = ({ children }) => {
         client,
         login,
         register,
+        reserves,
       }
     }
   >{ children }</AuthContext.Provider>;

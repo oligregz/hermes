@@ -22,7 +22,17 @@ const getClients = async () => {
   }
 };
 
+const getReserves = async () => {
+  try {
+    const response = await axios.get('http://localhost:3333/v1/reserve-getall');
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export {
   postClient,
   getClients,
+  getReserves,
 };
