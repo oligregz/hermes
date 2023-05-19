@@ -1,0 +1,439 @@
+{
+	"info": {
+		"_postman_id": "ca5021c5-b53a-4d7f-aeb2-b60a7bcb654f",
+		"name": "hermes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20417687",
+		"_collection_link": "https://zgoz-apire.postman.co/workspace/Team-Workspace~b41e10b1-107c-4555-867b-26499c034cfa/collection/20417687-ca5021c5-b53a-4d7f-aeb2-b60a7bcb654f?action=share&creator=20417687&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/v1/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Bryan Barberyna\",\n    \"telephone\": \"+64 830 781765087\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/v1/client-post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"client-post"
+					]
+				},
+				"description": "Request with POST method referring to the Customer's registration in the database"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v1/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Bryan Barberyna\",\n    \"telephone\": \"+64 830 781765087\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/v1/client-post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"client-post"
+					]
+				},
+				"description": "Request with POST method referring to the Customer registration already registered in the database"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v1/client-update/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"John Kelleher Toretto\",\n    \"telephone\": \"+13 401 98733714903\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/v1/client-update/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"client-update",
+						"1"
+					]
+				},
+				"description": "Client update method"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v1/client-update/3",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"John Kelleher Toretto\",\n    \"telephone\": \"+13 401 98733714903\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/v1/client-update/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"client-update",
+						"3"
+					]
+				},
+				"description": "Update method when customer does not exist in database"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v1/clients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/v1/client-getall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"client-getall"
+					]
+				},
+				"description": "Find All clients method\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v1/clients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/v1/client-getall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"client-getall"
+					]
+				},
+				"description": "Find All method when there is no registered client"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v1/client-delete/3",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/v1/client-delete/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"client-delete",
+						"4"
+					]
+				},
+				"description": "Delete client method "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v1/client-delete/1212",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/v1/client-delete/1212",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"client-delete",
+						"1212"
+					]
+				},
+				"description": "Delete method when there is no registered customer"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v1/table-post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"capacity\": 4,\n    \"busy\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/v1/table-post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"table-post"
+					]
+				},
+				"description": "Post method for Table\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3333/v1/reserve-post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date\": \"2023-05-18\",\n    \"hour\": \"2023-05-17 14:30:00\",\n    \"clientId\": 1,\n    \"tableId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/v1/reserve-post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"reserve-post"
+					]
+				},
+				"description": "Post reserve"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3333/v1/reserve-post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date\": \"2023-05-18\",\n    \"hour\": \"2023-05-17 14:30:00\",\n    \"clientId\": 1,\n    \"tableId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/v1/reserve-post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"reserve-post"
+					]
+				},
+				"description": "Post method when there is already a reservation equal to the one to be implemented"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3333/v1/reserve-getall",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/v1/reserve-getall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"reserve-getall"
+					]
+				},
+				"description": "Get All reserves\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3333/v1/reserve-getall",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/v1/reserve-getall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"reserve-getall"
+					]
+				},
+				"description": "Get All reserves when there are no reserves"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3333/v1/reserve-delete/4",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/v1/reserve-delete/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"reserve-delete",
+						"4"
+					]
+				},
+				"description": "Delete method reserve"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3333/v1/reserve-delete/123123",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/v1/reserve-delete/123123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"reserve-delete",
+						"123123"
+					]
+				},
+				"description": "Delete method when there are no reservations"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3333/v1/client-get/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/v1/client-get/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"client-get",
+						"1"
+					]
+				},
+				"description": "Get client by id method"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3333/v1/client-get/4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/v1/client-get/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"v1",
+						"client-get",
+						"4"
+					]
+				},
+				"description": "Get client by id method when there is no client"
+			},
+			"response": []
+		}
+	]
+}
