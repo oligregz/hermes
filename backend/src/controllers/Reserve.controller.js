@@ -50,5 +50,25 @@ module.exports = {
     } catch (e) {
       res.status(400).json({ message: e });
     }
+  },
+  async lessThanFifteenReserves(req, res) {
+    try {
+      const { date } = req.body;
+      const reserves = await Reserve.findAll();
+  
+      if (!reserves) {
+        return res.status(401).json({ message: false });
+      }
+  
+      const filteredReserves = reserves.filter((reserve) => {
+        return reserve.quantity < 15;
+      });
+  
+      const numberOfReserves = filteredReserves.length;
+  
+      res.status(200).json({ numberOfReserves, message: true });
+    } catch (e) {
+      res.status(500).json({ message: e });
+    }
   }
 }

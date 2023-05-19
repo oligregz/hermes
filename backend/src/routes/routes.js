@@ -15,6 +15,7 @@ router.post('/v1/table-post', TableController.createTable);
 
 router.post('/v1/reserve-post', ReserveController.createReserve);
 router.get('/v1/reserve-getall', ReserveController.listReserves);
+router.get('/v1/reserve-fifteen', ReserveController.lessThanFifteenReserves);
 router.delete('/v1/reserve-delete/:id', ReserveController.deleteReserve);
 
 
