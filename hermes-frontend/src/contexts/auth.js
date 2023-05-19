@@ -5,6 +5,8 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [currentClient, setCurrentClient] = useState("");
+  const [clientForm, setClientForm] = useState({});
+  const [fromSql, setFromSql] = useState({});
 
   const login = async (name) => {
     try {
@@ -66,6 +68,10 @@ export const AuthProvider = ({ children }) => {
         register,
         reserves,
         clientById,
+        clientForm,
+        setClientForm,
+        fromSql,
+        setFromSql,
       }
     }
   >{ children }</AuthContext.Provider>;

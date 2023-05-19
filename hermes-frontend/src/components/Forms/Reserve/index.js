@@ -1,9 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from '../../Input';
-import Button from'../../Button';
+import useAuth from '../../../hooks/useAuth';
+import { managerReserves, createTable } from './submitProcess';
 import './Reserve.css';
 
 const Reservevation = () => {
+
+  const {
+    clientForm,
+    setClientForm,
+  } = useAuth();
+
   useEffect(() => {
     const form = document.getElementById('myForm');
     const submitButton = document.getElementById('submitButton');
@@ -40,12 +47,35 @@ const Reservevation = () => {
         hourField.focus();
       }
     });
+
   }, []);
 
-  const submit = (event) => {
+  useEffect(() => {
+  }, [clientForm]);
+  
+  const submit = async (event) => {
     event.preventDefault();
-    console.log("submit");
-  }
+  
+    const form = event.target;
+  
+    setClientForm({
+      date: form.elements.dateField.value,
+      hour: form.elements.hourField.value,
+      clientId: form.elements.clientIdField.value,
+      tableId: await createTable(),
+    });
+
+    managerReserves(clientForm);
+
+    return clientForm;
+  };
+
+  const [tableId, setTableId] = useState('');
+
+  const handleClick = async () => {
+    const newTableId = await createTable();
+    setTableId(newTableId);
+  };
 
   return (
     <div class="container mt-5">
@@ -65,7 +95,12 @@ const Reservevation = () => {
         </div>
         <div class="form-group">
           <label for="tableIdField">ID da Mesa:</label>
-          <Input type="text" className="form-control" id="tableIdField" required />
+          <Input
+          type="text"
+            className="form-control"
+            id="tableIdField"
+            value={tableId}
+            onClick={handleClick}/>
         </div>
         <button
           type="submit"

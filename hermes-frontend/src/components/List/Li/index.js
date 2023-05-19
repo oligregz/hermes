@@ -1,6 +1,5 @@
 import React, { useState, useEffect }from 'react';
 import useAuth from '../../../hooks/useAuth';
-import { getClientById } from '../../../services/sevice';
 import formatDateToBR from '../../../utils/date';
 import formatDateTimeToBR from '../../../utils/time';
 
@@ -50,7 +49,7 @@ const Reserve = () => {
       {reservesData && Object.entries(reservesData).map(([key, value]) => (
         <li className="list-group-item" key={key}>
           {
-          `Referência do Cliente: ${value.id}
+          `Referência da Reserva: ${value.id}
           | Mesa: ${value.tableId}
           | Data: ${formatDateToBR(value.date)}
           | Hora: ${formatDateTimeToBR(value.hour)}`
