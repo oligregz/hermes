@@ -1,5 +1,6 @@
 import React from 'react';
 import Reserve from '../Li';
+import './reserves.css';
 
 const Reserves = () => {
   return (
