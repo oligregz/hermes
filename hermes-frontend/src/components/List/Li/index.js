@@ -16,7 +16,6 @@ const Reserve = () => {
       const data = await reserves();
       setReservesData(data.reserves);
       setValuesData(JSON.stringify(data.reserves));
-      console.log(data.reserves);
     };
     
     fetchData();

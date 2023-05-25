@@ -13,7 +13,12 @@ const managerReserves = async (clientForm) => {
     return;
   } else {
     const obj = getObjPostReserve(clientForm);
+
+    console.log(obj);
+
     const createReserve = await postReserve(obj);
+
+    
     return createReserve;
   }
 }
@@ -23,7 +28,7 @@ const getObjPostReserve =  (clientForm) => {
   const obj = {
     date: clientForm.date,
     hour: hour,
-    clientId: clientForm.clientId,
+    clientId: parseInt(clientForm.clientId),
     tableId: clientForm.tableId,
   }
   return obj;

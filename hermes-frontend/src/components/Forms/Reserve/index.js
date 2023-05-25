@@ -5,11 +5,13 @@ import { managerReserves, createTable } from './submitProcess';
 import './Reserve.css';
 
 const Reservevation = () => {
-
+  
   const {
     clientForm,
     setClientForm,
   } = useAuth();
+
+  const [tableId, setTableId] = useState('');
 
   useEffect(() => {
     const form = document.getElementById('myForm');
@@ -53,33 +55,34 @@ const Reservevation = () => {
   useEffect(() => {
   }, [clientForm]);
   
-  const submit = async (event) => {
-    event.preventDefault();
-  
-    const form = event.target;
-  
-    setClientForm({
-      date: form.elements.dateField.value,
-      hour: form.elements.hourField.value,
-      clientId: form.elements.clientIdField.value,
-      tableId: await createTable(),
-    });
-
-    managerReserves(clientForm);
-
-    return clientForm;
-  };
-
-  const [tableId, setTableId] = useState('');
-
   const handleClick = async () => {
     const newTableId = await createTable();
     setTableId(newTableId);
   };
 
+  const submit = async (event) => {
+    event.preventDefault();
+  
+    const form = event.target;
+  
+    const clientIdInt = form.elements.clientIdField.value;
+    setClientForm({
+      date: form.elements.dateField.value,
+      hour: form.elements.hourField.value,
+      clientId: clientIdInt,
+      tableId: await createTable(),
+    });
+    
+    managerReserves(clientForm);
+
+    return clientForm;
+  };
+
+
+
   return (
     <div class="container mt-5">
-      <h4>Faça sua reserva preenchendo os campos abaixo</h4>
+      <h4>Realise sua reserva preenchendo os campos abaixo</h4>
       <form id="myForm" onSubmit={submit}>
         <div class="form-group">
           <label for="dateField">Data:</label>
@@ -98,9 +101,7 @@ const Reservevation = () => {
           <Input
           type="text"
             className="form-control"
-            id="tableIdField"
-            value={tableId}
-            onClick={handleClick}/>
+            id="tableIdField"/>
         </div>
         <button
           type="submit"
