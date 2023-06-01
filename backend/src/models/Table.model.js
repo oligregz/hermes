@@ -5,12 +5,10 @@ class Table extends Model {
     super.init({
       capacity: DataTypes.INTEGER,
       busy: DataTypes.BOOLEAN,
-      created_at: DataTypes.DATE,
-      updated_at: DataTypes.DATE,
     }, {
       sequelize,
       modelName: 'Table',
-      tableName: 'tables',
+      tableName: 'tables_tb',
       underscored: true,
     });
   }

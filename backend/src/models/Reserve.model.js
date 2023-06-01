@@ -5,14 +5,12 @@ class Reserve extends Model {
     super.init({
       date: DataTypes.DATEONLY,
       hour: DataTypes.DATE,
-      clientId: DataTypes.INTEGER,
-      tableId: DataTypes.INTEGER,
-      created_at: DataTypes.DATE,
-      updated_at: DataTypes.DATE,
+      clientId: DataTypes.BIGINT,
+      tableId: DataTypes.BIGINT,
     }, {
       sequelize,
       modelName: 'Reserve',
-      tableName: 'reservations',
+      tableName: 'reserves_tb',
       underscored: true,
     });
   }
@@ -20,12 +18,12 @@ class Reserve extends Model {
   static associate(models) {
     Reserve.belongsTo(models.Client, {
       foreignKey: 'clientId',
-      as: 'clients',
+      as: 'clients_tb',
     });
 
     Reserve.belongsTo(models.Table, {
       foreignKey: 'tableId',
-      as: 'tables',
+      as: 'tables_tb',
       onDelete: 'CASCADE',
     });
   }

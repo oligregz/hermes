@@ -4,13 +4,14 @@ class Client extends Model {
   static init(sequelize) {
     super.init({
       name: DataTypes.STRING,
+      email: DataTypes.STRING,
+      password: DataTypes.CHAR,
+      cpf: DataTypes.INTEGER,
       telephone: DataTypes.STRING,
-      created_at: DataTypes.DATE,
-      updated_at: DataTypes.DATE,
     }, {
       sequelize,
       modelName: 'Client',
-      tableName: 'clients',
+      tableName: 'clients_tb',
       underscored: true,
     });
   }

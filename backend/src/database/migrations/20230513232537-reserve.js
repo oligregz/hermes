@@ -3,9 +3,9 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up (queryInterface, Sequelize) {
-    return queryInterface.createTable('reservations', {
+    return queryInterface.createTable('reserves_tb', {
       id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
@@ -19,39 +19,31 @@ module.exports = {
         allowNull: false
       },
       clientId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: false,
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         field: 'client_id',
         references: {
-          model: 'clients',
+          model: 'clients_tb',
           key: 'id',
         }
       },
       tableId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: false,
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         field: 'table_id',
         references: {
-          model: 'tables',
+          model: 'tables_tb',
           key: 'id',
         }
-      },
-      created_at: {
-        type: Sequelize.DATE,
-        allowNull: true,
-      },
-      updated_at: {
-        type: Sequelize.DATE,
-        allowNull: true,
       },
     });
   },
 
   down (queryInterface, Sequelize) {
-    return queryInterface.dropTable('reservations');
+    return queryInterface.dropTable('reserves_tb');
   }
 };

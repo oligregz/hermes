@@ -3,9 +3,9 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up (queryInterface, Sequelize) {
-    return queryInterface.createTable('tables', {
+    return queryInterface.createTable('tables_tb', {
       id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
@@ -16,20 +16,12 @@ module.exports = {
       },
       busy: {
         type: Sequelize.BOOLEAN,
-        allowNull: false
-      },
-      created_at: {
-        type: Sequelize.DATE,
-        allowNull: true,
-      },
-      updated_at: {
-        type: Sequelize.DATE,
-        allowNull: true,
+        allowNull: false,
       },
     });
   },
 
   down (queryInterface, Sequelize) {
-    return queryInterface.dropTable('tables');
+    return queryInterface.dropTable('tables_tb');
   }
 };
